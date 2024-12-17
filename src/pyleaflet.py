@@ -5,6 +5,8 @@ from bs4 import BeautifulSoup
 
 from exceptions import IncorrectCRSException
 
+from tilelayer import TileLayer
+
 logger = Logger()
 
 
@@ -55,7 +57,7 @@ class Map:
         else:
             self.scroll_whell_zoom = "scroll_wheel_zoom"
 
-        self.map = self.get_map_content()
+        self.map_content = self.get_map_content()
 
         pass
 
@@ -87,7 +89,7 @@ class Map:
                 <body>
                     <div id="map"></div>
                 </body>
-                <script>
+                <script id="leaflet-script">
                     var map = L.map('map', {{
                         center: [{self.center[0]}, {self.center[1]}],
                         zoom: 13,
@@ -109,8 +111,8 @@ class Map:
     ) -> None:
         if file_path:
             with open(file_path, "w") as file:
-                file.write(self.map)
+                file.write(self.map_content)
 
         else:
-            html_soup = BeautifulSoup(self.map, "html.parser")
+            html_soup = BeautifulSoup(self.map_content, "html.parser")
             bytes_file.write(html_soup.prettify().encode())
