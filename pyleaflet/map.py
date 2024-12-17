@@ -1,13 +1,8 @@
-from aws_lambda_powertools import Logger
 from typing import Union, Optional, Annotated
 from io import BytesIO
 from bs4 import BeautifulSoup
 
 from exceptions import IncorrectCRSException
-
-from tilelayer import TileLayer
-
-logger = Logger()
 
 
 class Map:
