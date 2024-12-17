@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyleaflet"
-version = "0.1.0"
+version = "0.1.1"
 authors = [
     { name="Bruno Nunes Teixeira", email="brunont1211@gmail.com" },
 ]
